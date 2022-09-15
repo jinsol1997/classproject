@@ -28,34 +28,33 @@ public class Calculator {
 		multiplication(num1, num2);
 		division(num1,num2);
 		
-		System.out.printf("%d를 반지름으로 갖는 원의 둘레는 %f 입니다.", num1, circumFerence(num1));
-		System.out.println();
-		System.out.printf("%d를 반지름으로 갖는 원의 넓이는 %f 입니다.", num1, circleArea(num1));
+		System.out.printf("%d을(를) 반지름으로 갖는 원의 둘레는 %f 입니다.\t", num1, circumFerence(num1));
+		System.out.printf("%d을(를) 반지름으로 갖는 원의 넓이는 %f 입니다.\t", num1, circleArea(num1));
 		
 	}
 	
 	
 	public static void add(int sum1, int sum2) {
 		int result = sum1 + sum2;
-		System.out.println(result);
+		System.out.println("두 수의 합 : " + result);
 	}
 
 	
 	public static void minus(int sum1, int sum2) {
 		int result = sum1 - sum2;
-		System.out.println(result);
+		System.out.println("두 수를 뺀 값 : " + result);
 	}
 
 	
 	public static void multiplication(int sum1, int sum2) {
 		int result = sum1 * sum2;
-		System.out.println(result);
+		System.out.println("두 수를 곱한 값 : " + result);
 	}
 
 	
 	public static void division(int sum1, int sum2) {
 		int result = sum1 / sum2;
-		System.out.println(result);
+		System.out.println("두 수를 나눈 값 : " + result);
 	}
 	
 	public static float circumFerence(int sum1) {
