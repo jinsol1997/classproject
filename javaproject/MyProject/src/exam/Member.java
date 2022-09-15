@@ -19,10 +19,16 @@ public class Member {
 		
 		System.out.println("명진솔");
 		
-		String name = null;
-		int age = 0;
-		double height = 0;
-		boolean hasBook = false;
+		Scanner userInput = new Scanner(System.in);
+		
+		System.out.println("이름입력");
+		String name = userInput.nextLine();
+		System.out.println("나이입력");
+		int age = userInput.nextInt();
+		System.out.println("키입력");
+		double height = userInput.nextDouble();
+		System.out.println("책보유여부 true false");
+		boolean hasBook = userInput.nextBoolean();
 		
 		System.out.printf("이름 : %s\n나이 : %d\n키 : %f\n책 보유 여부 : %s", name, age, height, hasBook);
 		System.out.println();
@@ -44,7 +50,7 @@ public class Member {
 		- 40 이상의 경우는 암 검사도 무료로 검사를 할 수 있습니다.
 		*/
 		
-		Scanner userInput = new Scanner(System.in);
+		
 		System.out.println("태여난 년도를 입력해주세요.");
 		int year = userInput.nextInt();
 		
