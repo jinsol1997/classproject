@@ -48,12 +48,12 @@ public class Calculator {
 
 	
 	public static void multiplication(int sum1, int sum2) {
-		System.out.println("두 수를 곱한 값 : " + (sum1 * sum2));
+		System.out.println("두 수를 곱한 값 : " + sum1 * sum2);
 	}
 
 	
 	public static void division(int sum1, int sum2) {
-		System.out.println("두 수를 나눈 값 : " + (sum1 / sum2));
+		System.out.println("두 수를 나눈 값 : " + sum1 / sum2);
 	}
 	
 	public static float circumFerence(float sum1) {
