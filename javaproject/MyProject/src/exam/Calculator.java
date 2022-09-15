@@ -12,15 +12,26 @@ Calculator 클래스를 정의해봅시다.
 ⑧ 콘솔에서 사용자에게 데이터를 받아 메소드를 호출할 때 사용자에게 받은 데이터를 메소드의 매개변수의 인자로 전달하는 코드를 main() 메소드
 에 추가해봅시다.
 */
-
+import java.util.Scanner;
 public class Calculator {
 
 	public static void main(String[] args) {
 		
-		add(3, 5);
-		minus(5,1);
-		multiplication(10, 5);
-		division(100,50);
+		Scanner in = new Scanner(System.in);
+		System.out.println("첫 번째 정수를 입력해주세요.");
+		int num1 = in.nextInt();
+		System.out.println("두 번째 정수를 입력해주세요.");
+		int num2 = in.nextInt();
+		
+		add(num1, num2);
+		minus(num1,num2);
+		multiplication(num1, num2);
+		division(num1,num2);
+		
+		System.out.printf("%d를 반지름으로 갖는 원의 둘레는 %f 입니다.", num1, circumFerence(num1));
+		System.out.println();
+		System.out.printf("%d를 반지름으로 갖는 원의 넓이는 %f 입니다.", num1, circleArea(num1));
+		circleArea(num1);
 		
 	}
 	
@@ -47,6 +58,16 @@ public class Calculator {
 		int result = sum1 / sum2;
 		System.out.println(result);
 	}
+	
+	public static float circumFerence(int sum1) {
+		return (float)(2*sum1*3.14);
+	}
+	
+	public static float circleArea(int sum1) {
+		return (float)(sum1*sum1*3.14);
+	}
+	
+	
 	
 }
 
