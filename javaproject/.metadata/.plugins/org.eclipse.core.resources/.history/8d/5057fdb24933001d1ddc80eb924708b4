@@ -1,0 +1,40 @@
+package homework;
+
+public class Calculator {
+
+	public static void main(String[] args) {
+		
+		
+		
+	}
+	
+	
+	public static void add(int sum1, int sum2) {
+		int result = sum1 + sum2;
+		System.out.println(result);
+	}
+
+	
+	public static void minus(int sum1, int sum2) {
+		int result = sum1 - sum2;
+		System.out.println(result);
+	}
+
+	
+	public static void multiplication(int sum1, int sum2) {
+		int result = sum1 * sum2;
+		System.out.println(result);
+	}
+
+	
+	public static void division(int sum1, int sum2) {
+		int result = sum1 / sum2;
+		System.out.println(result);
+	}
+	
+}
+
+
+
+
+
