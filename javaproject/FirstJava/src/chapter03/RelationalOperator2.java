@@ -6,22 +6,21 @@ public class RelationalOperator2 {
 		
 		// 관계연산자 (비교연산자)
 		// > < >= <= == !=
+	
+		// 참조변수 : 주소를 가지는 변수
+		// 주소 : 객체를 가르키는 주소 값
+		// 크다 작다 비교는 하지 않는다
+		// 같은 주소를 가지는지 확인하는 연산이 주로 사용된다.
 		
-		int num1 = 30;
-		int num2 = 200;
+		String str1 = "JAVA";
+		String str2 = "HTML";
+		String str3 = "JAVA";
 		
-		System.out.println(num1 > num2); // true
-		System.out.println(num1 < num2); // false
-		System.out.println(num1 >= num2);// true
-		System.out.println(num1 <= num2);// false
-		System.out.println(num1 == num2);// false
-		System.out.println(num1 != num2);// true
+		System.out.println(str1 == str2);// 주소값 == 주소값
+		System.out.println(str1 != str2);
+	
+		System.out.println("str1 == str3 => " + (str1 == str3));
 		
-		if(num1>num2) {
-			// 참일 때  처리되는 블록
-			System.out.println("num1이 num2보다 큽니다.");
-		}
-		
-		// 
+		// System.out.println(str1 > str2);
 	}
 }
