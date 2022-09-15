@@ -38,26 +38,22 @@ public class Calculator {
 	
 	
 	public static void add(int sum1, int sum2) {
-		int result = sum1 + sum2;
-		System.out.println("두 수의 합 : " + result);
+		System.out.println("두 수의 합 : " + (sum1 + sum2));
 	}
 
 	
 	public static void minus(int sum1, int sum2) {
-		int result = sum1 - sum2;
-		System.out.println("두 수를 뺀 값 : " + result);
+		System.out.println("두 수를 뺀 값 : " + (sum1 - sum2));
 	}
 
 	
 	public static void multiplication(int sum1, int sum2) {
-		int result = sum1 * sum2;
-		System.out.println("두 수를 곱한 값 : " + result);
+		System.out.println("두 수를 곱한 값 : " + (sum1 * sum2));
 	}
 
 	
 	public static void division(int sum1, int sum2) {
-		int result = sum1 / sum2;
-		System.out.println("두 수를 나눈 값 : " + result);
+		System.out.println("두 수를 나눈 값 : " + (sum1 / sum2));
 	}
 	
 	public static float circumFerence(float sum1) {
