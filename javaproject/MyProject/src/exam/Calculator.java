@@ -28,8 +28,11 @@ public class Calculator {
 		multiplication(num1, num2);
 		division(num1,num2);
 		
-		System.out.printf("%d을(를) 반지름으로 갖는 원의 둘레는 %f 입니다.\t", num1, circumFerence(num1));
-		System.out.printf("%d을(를) 반지름으로 갖는 원의 넓이는 %f 입니다.\t", num1, circleArea(num1));
+		System.out.println("원의 반지름을 입력해주세요.");
+		float num3 = in.nextFloat();
+		System.out.printf("%f을(를) 반지름으로 갖는 원의 둘레는 %f 입니다.\t", num3, circumFerence(num3));
+		System.out.printf("%f을(를) 반지름으로 갖는 원의 넓이는 %f 입니다.\t", num3, circleArea(num3));
+		
 		
 	}
 	
@@ -57,11 +60,11 @@ public class Calculator {
 		System.out.println("두 수를 나눈 값 : " + result);
 	}
 	
-	public static float circumFerence(int sum1) {
+	public static float circumFerence(float sum1) {
 		return (float)(2*sum1*3.14);
 	}
 	
-	public static float circleArea(int sum1) {
+	public static float circleArea(float sum1) {
 		return (float)(sum1*sum1*3.14);
 	}
 	
