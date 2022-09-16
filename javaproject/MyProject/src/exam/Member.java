@@ -1,5 +1,6 @@
 package exam;
 import java.util.Scanner;
+import java.util.Calendar;
 
 public class Member {
 
@@ -51,10 +52,13 @@ public class Member {
 		*/
 		
 		
+		Calendar now = Calendar.getInstance();
+		int nowYear = now.get(Calendar.YEAR);
+		
 		System.out.println("태여난 년도를 입력해주세요.");
 		int year = userInput.nextInt();
 		
-		if(2022-year<16 || 2022-year>=64) {
+		if(nowYear-year<16 || nowYear-year>=64) {
 			System.out.println("무료예방접종이 가능합니다.");
 		}else{
 			System.out.println("무료접종 대상이 아닙니다.");
@@ -62,9 +66,9 @@ public class Member {
 		
 		System.out.println("태어난 년도를 입력해주세요.");
 		year = userInput.nextInt();
-		if(year%2==0 && 2022-year > 18) {
+		if(year%2==0 && nowYear-year > 18) {
 			System.out.println("무료 건강검진 대상자입니다.");
-			if(2022-year>38) {
+			if(nowYear-year>38) {
 				System.out.println("암 검사도 무료로 할 수 있습니다.");
 			}
 		}else {
