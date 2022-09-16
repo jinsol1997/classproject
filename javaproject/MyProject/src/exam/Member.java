@@ -51,29 +51,7 @@ public class Member {
 		- 40 이상의 경우는 암 검사도 무료로 검사를 할 수 있습니다.
 		*/
 		
-		/*
-		int currYear = Calendar.getInstance().get(Calendar.YEAR);
-		
-		System.out.println("태여난 년도를 입력해주세요.");
-		int birth = userInput.nextInt();
-		
-		if(currYear-birth<15 || currYear-birth>64) {
-			System.out.println("무료예방접종이 가능합니다.");
-		}else{
-			System.out.println("무료접종 대상이 아닙니다.");
-		}
-		
-		System.out.println("태어난 년도를 입력해주세요.");
-		birth = userInput.nextInt();
-		if(birth%2==0 && currYear-birth > 19) {
-			System.out.println("무료 건강검진 대상자입니다.");
-			if(currYear-birth>39) {
-				System.out.println("암 검사도 무료로 할 수 있습니다.");
-			}
-		}else {
-			System.out.println("무료 건강검진 대상자가 아닙니다.");
-		}
-		*/
+	
 		Scanner userInput = new Scanner(System.in);
 		
 		while(true) {
@@ -102,7 +80,6 @@ public class Member {
 		// 올해 년도
 		int currYear = Calendar.getInstance().get(Calendar.YEAR);
 		
-		// 나이 계산
 		int age = currYear - birthYear + 1;
 		
 		System.out.println("나이 : " + age);
