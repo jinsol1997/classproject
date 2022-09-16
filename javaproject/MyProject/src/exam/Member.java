@@ -17,7 +17,7 @@ public class Member {
 		
 		
 
-		
+		/*
 		System.out.println("명진솔");
 		
 		Scanner userInput = new Scanner(System.in);
@@ -33,7 +33,7 @@ public class Member {
 		
 		System.out.printf("이름 : %s\n나이 : %d\n키 : %f\n책 보유 여부 : %s", name, age, height, hasBook);
 		System.out.println();
-		
+		*/
 		
 		
 		
@@ -51,31 +51,84 @@ public class Member {
 		- 40 이상의 경우는 암 검사도 무료로 검사를 할 수 있습니다.
 		*/
 		
-		
-		Calendar now = Calendar.getInstance();
-		int nowYear = now.get(Calendar.YEAR);
+		/*
+		int currYear = Calendar.getInstance().get(Calendar.YEAR);
 		
 		System.out.println("태여난 년도를 입력해주세요.");
-		int year = userInput.nextInt();
+		int birth = userInput.nextInt();
 		
-		if(nowYear-year<16 || nowYear-year>=64) {
+		if(currYear-birth<15 || currYear-birth>64) {
 			System.out.println("무료예방접종이 가능합니다.");
 		}else{
 			System.out.println("무료접종 대상이 아닙니다.");
 		}
 		
 		System.out.println("태어난 년도를 입력해주세요.");
-		year = userInput.nextInt();
-		if(year%2==0 && nowYear-year > 18) {
+		birth = userInput.nextInt();
+		if(birth%2==0 && currYear-birth > 19) {
 			System.out.println("무료 건강검진 대상자입니다.");
-			if(nowYear-year>38) {
+			if(currYear-birth>39) {
 				System.out.println("암 검사도 무료로 할 수 있습니다.");
 			}
 		}else {
 			System.out.println("무료 건강검진 대상자가 아닙니다.");
 		}
+		*/
+		Scanner userInput = new Scanner(System.in);
 		
+		while(true) {
 		
+			System.out.print("출생년도를 입력해주세요. 종료는 (0) >>> ");
+			
+			int birth = userInput.nextInt();
+			if(birth == 0) {
+				System.out.println("프로그램을 종료합니다.");
+				return; // 메소드의 종료, 반환
+				// main 메소드의 종료는 프로그램의 종료
+			}
+			
+			System.out.println("조회 결과");
+			System.out.println("----------");
+			checkVaccine(birth);
+			checkUp(birth);
+			System.out.println("----------");
+			System.out.println();
+		}
+		
+	}
+	
+	public static void checkVaccine(int birthYear) {
+		
+		// 올해 년도
+		int currYear = Calendar.getInstance().get(Calendar.YEAR);
+		
+		// 나이 계산
+		int age = currYear - birthYear + 1;
+		
+		System.out.println("나이 : " + age);
+		
+		if(age<15 || age>=65) {
+			System.out.println("무료 예방접종이 가능합니다.");
+		} else {
+			System.out.println("무료 접종 대상이 아닙니다.");
+		}
+		
+	}
+	
+	public static void checkUp(int birthYear) {
+		
+		int currYear = Calendar.getInstance().get(Calendar.YEAR);
+		int age = currYear - birthYear + 1;
+	
+		
+		if(age >= 20 && (currYear % 2 == birthYear % 2)) {
+			System.out.println("무료 건강검진 대상자 입니다.");
+			if(age>=40) {
+				System.out.println("암 검사도 무료로 할 수 있습니다.");
+			}
+		} else {
+			System.out.println("무료 건강검진 대상자가 아닙니다.");
+		}
 	}
 }
 
