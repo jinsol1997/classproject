@@ -18,6 +18,10 @@ public class SmartPhoneMain {
 		// new SmarPhone
 		// SmartPhone()
 		
+		SmartPhone sp4 = new SmartPhone("APPLE", 50f);
+		sp4.showInfo();
 		
+		SmartPhone sp5 = new SmartPhone("Samsung");
+		sp5.showInfo();
 	}
 }

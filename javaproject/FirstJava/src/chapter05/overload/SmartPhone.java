@@ -43,7 +43,21 @@ public class SmartPhone {
 		this.volumeSize = volumeSize;
 	}
 	
+	SmartPhone(String company, float size){
+//		this.company = company;
+//		this.size = size;
+//		this.color = "black";
+//		this.volumeSize = 10;
+		this("black", size, company, 10);
+	}
 	
+	SmartPhone(String company){
+//		this.company = company;
+//		this.size = 4f;
+//		this.color = "black";
+//		this.volumeSize = 10;
+		this("black", 4f, company, 10);
+	}
 	
 	
 	// 전화걸기
