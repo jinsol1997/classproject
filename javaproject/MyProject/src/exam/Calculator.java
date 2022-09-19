@@ -33,7 +33,7 @@ public class Calculator {
 		System.out.printf("%f을(를) 반지름으로 갖는 원의 둘레는 %f 입니다.\t", num3, circumFerence(num3));
 		System.out.printf("%f을(를) 반지름으로 갖는 원의 넓이는 %f 입니다.\t", num3, circleArea(num3));
 		
-		
+		in.close();
 	}
 	
 	
