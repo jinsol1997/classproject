@@ -19,8 +19,7 @@ public class Member {
 	String birthDay;
 	String address;
 	
-	Member(){	
-	}
+	
 	
 	Member(String name, String phoneNumber, String majorIn, int grade, String email, String birthDay, String address){
 	this.name = name;
