@@ -14,6 +14,20 @@ public class Student {
 	private int korScore;
 	private int engScore;
 	private int mathScore;
+	
+	
+
+	public Student(String name, int korScore, int engScore, int mathScore) {
+		
+		this.name = name;
+		this.korScore = korScore;
+		this.engScore = engScore;
+		this.mathScore = mathScore;
+	}
+	
+	public Student() {
+		
+	}
 
 	public String getName() {
 		return name;
@@ -47,10 +61,25 @@ public class Student {
 		this.mathScore = mathScore;
 	}
 	
-	
-	public int average(int korScore, int engScore, int mathScore) {
-		return (korScore + engScore + mathScore)/3;
+	public int sum() {
+		return korScore + engScore + mathScore;
 	}
+	
+	public double average() {
+		int result = (int)(sum()/3.0*100);
+		return result/100.0;
+	}
+
+	@Override
+	public String toString() {
+		return this.name + "\t" + 
+				this.korScore + "\t" + 
+				this.engScore + "\t" + 
+				this.mathScore + "\t" +
+				sum() + "\t" +
+				average() + "\n";
+	}
+	
 	
 	
 
