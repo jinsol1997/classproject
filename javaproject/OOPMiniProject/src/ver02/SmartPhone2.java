@@ -42,6 +42,11 @@ public class SmartPhone2 {
 		System.out.println("변경하고자 하는 이름을 입력해주세요.(현재값:" + contact.getName() + ")\n" + "변경하지 않으려면 엔터를 눌러주세요. >");
 
 		String newName = sc.nextLine();
+		
+		if(findNameIndex(newName) != -1) {
+			System.out.println("중복된 이름입니다.");
+			return;
+		}
 
 		System.out.println("변경하고자 하는 전화번호를 입력해주세요.(현재값:" + contact.getPhoneNumber() + ")\n" + "변경하지 않으려면 엔터를 눌러주세요. >");
 
@@ -151,6 +156,11 @@ public class SmartPhone2 {
 		System.out.print("이름 > ");
 		name = sc.nextLine();
 
+		if(findNameIndex(name) != -1) {
+			System.out.println("중복된 이름입니다.");
+			return;
+		}
+		
 		System.out.print("전화번호 > ");
 		phoneNumber = sc.nextLine();
 
@@ -165,6 +175,7 @@ public class SmartPhone2 {
 
 		System.out.print("그룹 > ");
 		group = sc.nextLine();
+		
 
 		if (checkString(name) && checkString(phoneNumber) && checkString(email) && checkString(address)
 				&& checkString(birthday) && checkString(group)) {
