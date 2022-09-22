@@ -1,6 +1,6 @@
-package ver01;
+package ver02;
 
- class Contact {
+class Contact {
 
 	private String name;
 	private String phoneNumber;
@@ -77,11 +77,18 @@ package ver01;
 		System.out.println(" 주소 : " + this.address);
 		System.out.println(" 생일 : " + this.birthday);
 		System.out.println(" 그룹 : " + this.group);
+		System.out.println();
 	}
 
 	@Override
 	public String toString() {
 		return "Contact [name=" + name + ", phoneNumber=" + phoneNumber + ", email=" + email + ", address=" + address
 				+ ", birthday=" + birthday + ", group=" + group + "]";
+	}
+
+	public static void main(String[] args) {
+
+		Contact contact = new Contact();
+
 	}
 }
