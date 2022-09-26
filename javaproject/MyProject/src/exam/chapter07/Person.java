@@ -1,6 +1,6 @@
 package exam.chapter07;
 
-import java.util.Calendar;
+import java.time.LocalDate;
 
 public class Person {
 
@@ -9,29 +9,37 @@ public class Person {
 
 	public Person(String name, String residentNumber) {
 		this.name = name;
-		this.residentNumber = residentNumber;
+		this.residentNumber = residentNumber.replace("-", "");
 	}
 
-	public int getAge() {
+	int getAge() {
 
-		Calendar cal = Calendar.getInstance();
-		int year = cal.get(Calendar.YEAR);
-		long birth = stringToLong() / 100000000000L + 1900L;
-		System.out.println("birth 값 : " + birth);
-		if(birth<1922) {
-			birth+=100;
+		int age = 0;
+
+		String tempYear = residentNumber.substring(0, 2);
+
+		int currYear = LocalDate.now().getYear();
+
+		int birthYear = Integer.parseInt(tempYear);
+
+		if (getGender() == 1 || getGender() == 2) {
+			age = currYear - (birthYear + 1900) + 1;
+		} else if (getGender() == 3 || getGender() == 4) {
+			age = currYear - (birthYear + 2000) + 1;
+		} else {
+			System.out.println("잘못된 주민등록번호 입니다.");
 		}
-		return year - (int) birth + 1;
+
+		return age;
+
+	}
+
+	int getGender() {
+		return Integer.parseInt(residentNumber.substring(7, 8));
 	}
 
 	public void introduce() {
 		System.out.println("안녕하세요. 저는 " + name + "입니다. " + getAge() + "살 입니다.");
-	}
-
-	public long stringToLong() {
-		String result = this.residentNumber.replace("-", "");
-		System.out.println("stringTolong 리턴값 : " + Long.parseLong(result));
-		return Long.parseLong(result);
 	}
 
 }
