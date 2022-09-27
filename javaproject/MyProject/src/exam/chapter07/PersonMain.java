@@ -11,6 +11,7 @@ public class PersonMain {
 		String name = userInput.nextLine();
 		System.out.println("주민등록번호를 입력해주세요.");
 		String residentNumber = userInput.nextLine();
+		userInput.close();
 
 		Person p = new Person(name, residentNumber);
 
