@@ -1,4 +1,4 @@
-package ver02;
+package ver04;
 
 import java.util.Scanner;
 
@@ -67,14 +67,63 @@ public class SmartPhone2 {
 		System.out.println("변경하고자 하는 그룹을 입력해주세요.(현재값:" + contact.getGroup() + ")\n" + "변경하지 않으려면 엔터를 눌러주세요. >");
 
 		String newGroup = sc.nextLine();
-		if (checkString(newName) && checkString(newPhoneNumber) && checkString(newEmail) && checkString(newAddress)
-				&& checkString(newBirthday) && checkString(newGroup)) {
-			contact.setName(newName);
-			contact.setPhoneNumber(newPhoneNumber);
-			contact.setEmail(newEmail);
-			contact.setAddress(newAddress);
-			contact.setBirthday(newBirthday);
-			contact.setGroup(newGroup);
+
+		contact.setName(newName);
+		contact.setPhoneNumber(newPhoneNumber);
+		contact.setEmail(newEmail);
+		contact.setAddress(newAddress);
+		contact.setBirthday(newBirthday);
+		contact.setGroup(newGroup);
+
+		if (contact instanceof CompanyContact) {
+
+			
+			CompanyContact companyContact = (CompanyContact) contact;
+			System.out.println("변경하고자하는 회사이름을 입력해주세요.(현재값: " + companyContact.getCompany() + ")\n" + "변경하지않으려면 엔터를 치세요 >");
+			String company = sc.nextLine();
+			if(company!=null && company.trim().length()>0) {
+				companyContact.setManager(company);
+			}
+			
+			
+			System.out.println("변경하고자하는 부서이름을 입력해주세요.(현재값: " + companyContact.getDivision() + ")\n" + "변경하지않으려면 엔터를 치세요 >");
+			String division = sc.nextLine();
+			if(division!=null && division.trim().length()>0) {
+				companyContact.setDivision(division);
+			}
+			
+			
+			
+			System.out.println("변경하고자하는 직급을 입력해주세요.(현재값: " + companyContact.getManager() + ")\n" + "변경하지않으려면 엔터를 치세요 >");
+			String manager = sc.nextLine();
+			if(manager!=null && manager.trim().length()>0) {
+				companyContact.setManager(manager);
+			}
+			
+			
+		} else if (contact instanceof CustomerContact) {
+			
+			CustomerContact customerContact = (CustomerContact) contact;
+			
+			System.out.println("변경하고자하는 거래처 이름을 입력해주세요.(현재값: " + customerContact.getCompany() + ")\n" + "변경하지않으려면 엔터를 치세요 >");
+			String company = sc.nextLine();
+			if(company!=null && company.trim().length()>0) {
+				customerContact.setCompany(company);
+			}
+			
+			System.out.println("변경하고자하는 거래품목을 입력해주세요.(현재값: " + customerContact.getProduct() + ")\n" + "변경하지않으려면 엔터를 치세요 >");
+			String product = sc.nextLine();
+			if(product!=null && product.trim().length()>0) {
+				customerContact.setProduct(product);
+			}
+			
+			System.out.println("변경하고자하는 담당자 이름을 입력해주세요.(현재값: " + customerContact.getManager() + ")\n" + "변경하지않으려면 엔터를 치세요 >");
+			String manager = sc.nextLine();
+			if(manager!=null && manager.trim().length()>0) {
+				customerContact.setManager(manager);
+			}
+			
+			
 		}
 
 		System.out.println("정보가 수정되었습니다.");
@@ -131,7 +180,9 @@ public class SmartPhone2 {
 		}
 
 		for (int i = 0; i < numOfContact; i++) {
+			System.out.println();
 			contacts[i].showInfo();
+			System.out.println();
 		}
 	}
 
@@ -141,6 +192,10 @@ public class SmartPhone2 {
 			System.out.println("최대 저장 개수는 " + contacts.length + "개 입니다.");
 			return;
 		}
+
+		System.out.println("입력하고자하는 연락처 유형을 선택해주세요.");
+		System.out.println("1. 회사 동료 \t 2. 거래처");
+		int select = Integer.parseInt(sc.nextLine());
 
 		String name = null;
 		String phoneNumber = null;
@@ -174,12 +229,36 @@ public class SmartPhone2 {
 		System.out.print("그룹 > ");
 		group = sc.nextLine();
 
-		if (checkString(name) && checkString(phoneNumber) && checkString(email) && checkString(address)
-				&& checkString(birthday) && checkString(group)) {
-			Contact contact = new Contact(name, phoneNumber, email, address, birthday, group);
-			contacts[numOfContact++] = contact;
+		Contact contact = null;
 
+		// 분기 1. 회사 2. 거래처
+		if (select == 1) {
+			// CompanyContact 인스턴스 생성
+			System.out.println("회사 이름 >> ");
+			String company = sc.nextLine();
+			System.out.println("부서 이름 >> ");
+			String division = sc.nextLine();
+			System.out.println("직급 >> ");
+			String manager = sc.nextLine();
+
+			contact = new CompanyContact(name, phoneNumber, email, address, birthday, group, company, division,
+					manager);
+
+		} else {
+			// CustomerContact 인스턴스 생성
+
+			System.out.println("거래처 이름 >> ");
+			String company = sc.nextLine();
+			System.out.println("거래 품목 >> ");
+			String product = sc.nextLine();
+			System.out.println("담당자 >> ");
+			String manager = sc.nextLine();
+
+			contact = new CustomerContact(name, phoneNumber, email, address, birthday, group, company, product,
+					manager);
 		}
+
+		contacts[numOfContact++] = contact;
 	}
 
 	int findNameIndex(String name) {
@@ -197,14 +276,6 @@ public class SmartPhone2 {
 
 	}
 
-	boolean checkString(String str) {
-		if (str != null && str.trim().length() > 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
 	void printMenu() {
 		System.out.println("======================");
 		System.out.println("# 전화번호부");
@@ -217,4 +288,5 @@ public class SmartPhone2 {
 		System.out.println("======================");
 
 	}
+
 }
