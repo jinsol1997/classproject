@@ -367,4 +367,5 @@ public class SmartPhone2 {
 
 	}
 
+	//chkh
 }
