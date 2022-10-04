@@ -2,7 +2,7 @@ package ver06;
 
 public class SmartPhoneMain2 {
 
-	public static void main(String[] args) throws BadMenuInputException {
+	public static void main(String[] args) {
 
 		SmartPhone2 sp = SmartPhone2.getInstance();
 
@@ -12,7 +12,7 @@ public class SmartPhoneMain2 {
 			try {
 				int select = Integer.parseInt(sp.sc.nextLine());
 				if (select < 1 || select > 6) {
-					throw new BadMenuInputException();
+					throw new BadMenuInputException("1~6 사이의 값을 입력해주세요.");
 				}
 				switch (select) {
 				case 1:
@@ -34,11 +34,13 @@ public class SmartPhoneMain2 {
 					System.out.println("프로그램을 종료합니다.");
 					return;
 				}
+			} catch (NumberFormatException e) {
+				System.out.println("숫자를 입력해주세요.");
 			} catch (Exception e) {
 				e.printStackTrace();
-			} 
-		}
+			}
 
+		}
 	}
 
 }

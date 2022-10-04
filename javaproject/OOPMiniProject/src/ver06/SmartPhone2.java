@@ -43,8 +43,15 @@ public class SmartPhone2 {
 
 		String newName = sc.nextLine();
 
-		if (getIndex(newName) != -1) {
-			System.out.println("중복된 이름입니다.");
+		try {
+			if (getIndex(newName) != -1) {
+				throw new BadMenuInputException("중복된 이름입니다.");
+			}
+			if (checkName(newName) == false) {
+				throw new BadMenuInputException("한글, 영문 대소문자만 입력 가능합니다.");
+			}
+		} catch (BadMenuInputException e) {
+			e.printStackTrace();
 			return;
 		}
 
@@ -52,8 +59,18 @@ public class SmartPhone2 {
 
 		String newPhoneNumber = sc.nextLine();
 
-		if (getIndex(newPhoneNumber) != -1) {
-			System.out.println("중복된 전화번호입니다.");
+		checkPhoneNumber(newPhoneNumber);
+
+		if (checkPhoneNumber(newPhoneNumber) == false) {
+			return;
+		}
+
+		try {
+			if (getPhoneNumberIndex(newPhoneNumber) != -1) {
+				throw new BadMenuInputException("중복된 번호입니다.");
+			}
+		} catch (BadMenuInputException e) {
+			e.printStackTrace();
 			return;
 		}
 
@@ -225,16 +242,34 @@ public class SmartPhone2 {
 		System.out.print("이름 > ");
 		name = getString();
 
-		if (getIndex(name) != -1) {
-			System.out.println("중복된 이름입니다.");
+		try {
+			if (getIndex(name) != -1) {
+				throw new BadMenuInputException("중복된 이름입니다.");
+			}
+			if (checkName(name) == false) {
+				throw new BadMenuInputException("한글, 영문 대소문자만 입력 가능합니다.");
+			}
+
+		} catch (BadMenuInputException e) {
+			e.printStackTrace();
 			return;
 		}
 
 		System.out.print("전화번호 > ");
 		phoneNumber = getString();
 
-		if (getIndex(phoneNumber) != -1) {
-			System.out.println("중복된 전화번호입니다.");
+		checkPhoneNumber(phoneNumber);
+
+		if (checkPhoneNumber(phoneNumber) == false) {
+			return;
+		}
+		
+		try {
+			if (getPhoneNumberIndex(phoneNumber) != -1) {
+				throw new BadMenuInputException("중복된 번호입니다.");
+			}
+		} catch (BadMenuInputException e) {
+			e.printStackTrace();
 			return;
 		}
 
@@ -314,6 +349,21 @@ public class SmartPhone2 {
 
 	}
 
+	private int getPhoneNumberIndex(String phoneNumber) {
+		int searchIndex = -1;
+
+		for (int i = 0; i < numOfContact; i++) {
+
+			if (contacts[i].getPhoneNumber().equals(phoneNumber)) {
+				searchIndex = i;
+				break;
+			}
+		}
+
+		return searchIndex;
+
+	}
+
 	/*
 	 * private String getName() { String name = null;
 	 * 
@@ -345,13 +395,42 @@ public class SmartPhone2 {
 	 * return name; }
 	 */
 
-	boolean checkString(String str) {
-		if (str != null && str.trim().length() > 0) {
-			return true;
-		} else {
+	private boolean checkString(String str) {
+		boolean result = false;
 
+		if (str != null && str.trim().length() > 0) {
+			result = true;
+		} else {
+			System.out.println("공백은 입력 불가");
+		}
+
+		return result;
+	}
+
+	private boolean checkName(String str) {
+
+		for (int i = 0; i < str.length(); i++) {
+			if (!(str.charAt(i) >= '가' && str.charAt(i) <= '힣') && !(str.charAt(i) >= 'a' && str.charAt(i) <= 'z')
+					&& !(str.charAt(i) >= 'A' && str.charAt(i) <= 'Z')) {
+				System.out.println("한글, 영문 대소문자만 입력 가능합니다.");
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	private boolean checkPhoneNumber(String str) {
+
+		try {
+			Long.parseLong(str.replace("-", ""));
+
+		} catch (Exception e) {
+			System.out.println("정상적인 전화번호를 입력해주세요.");
 			return false;
 		}
+
+		return true;
 	}
 
 	void printMenu() {
@@ -367,5 +446,4 @@ public class SmartPhone2 {
 
 	}
 
-	//chkh
 }
