@@ -14,13 +14,13 @@ public class SmartPhone2 {
 		sc = new Scanner(System.in);
 	}
 
-	private static final int maxSize = 10;
+	private static final int MAX_SIZE = 10;
 
-	private static SmartPhone2 sp = new SmartPhone2(maxSize);
+	private static SmartPhone2 sp = new SmartPhone2(MAX_SIZE);
 
 	public static SmartPhone2 getInstance() {
 		if (sp == null) {
-			sp = new SmartPhone2(maxSize);
+			sp = new SmartPhone2(MAX_SIZE);
 		}
 		return sp;
 	}
@@ -30,7 +30,7 @@ public class SmartPhone2 {
 		System.out.print("수정하고자 하는 이름을 입력해주세요 >");
 		String name = getString();
 
-		if (getIndex(name) < 0 || getIndex(name) >= maxSize) {
+		if (getIndex(name) < 0 || getIndex(name) >= MAX_SIZE) {
 			System.out.println("찾으시는 데이터가 존재하지 않습니다.");
 			return;
 		}
@@ -41,37 +41,48 @@ public class SmartPhone2 {
 
 		System.out.println("변경하고자 하는 이름을 입력해주세요.(현재값:" + contact.getName() + ")\n" + "변경하지 않으려면 엔터를 눌러주세요. >");
 
-		String newName = sc.nextLine();
+		String newName;
 
-		try {
-			if (getIndex(newName) != -1) {
-				throw new BadMenuInputException("중복된 이름입니다.");
+		while (true) {
+
+			newName = sc.nextLine();
+
+			try {
+				if (getIndex(newName) != -1) {
+					throw new BadMenuInputException("중복된 이름입니다.");
+				}
+				if (checkName(newName) == false) {
+					throw new BadMenuInputException("한글, 영문 대소문자만 입력 가능합니다.");
+				}
+			} catch (BadMenuInputException e) {
+				e.printStackTrace();
+				continue;
 			}
-			if (checkName(newName) == false) {
-				throw new BadMenuInputException("한글, 영문 대소문자만 입력 가능합니다.");
-			}
-		} catch (BadMenuInputException e) {
-			e.printStackTrace();
-			return;
+
+			break;
 		}
 
 		System.out.println("변경하고자 하는 전화번호를 입력해주세요.(현재값:" + contact.getPhoneNumber() + ")\n" + "변경하지 않으려면 엔터를 눌러주세요. >");
 
-		String newPhoneNumber = sc.nextLine();
+		String newPhoneNumber;
 
-		checkPhoneNumber(newPhoneNumber);
+		while (true) {
 
-		if (checkPhoneNumber(newPhoneNumber) == false) {
-			return;
-		}
+			newPhoneNumber = sc.nextLine();
 
-		try {
-			if (getPhoneNumberIndex(newPhoneNumber) != -1) {
-				throw new BadMenuInputException("중복된 번호입니다.");
+			try {
+				if (getPhoneNumberIndex(newPhoneNumber) != -1) {
+					throw new BadMenuInputException("중복된 번호입니다.");
+				}
+				if ((newPhoneNumber != "") && (checkPhoneNumber(newPhoneNumber) == false)) {
+					throw new BadMenuInputException("정상적인 번호를 입력해주세요.");
+				}
+			} catch (BadMenuInputException e) {
+				e.printStackTrace();
+				continue;
 			}
-		} catch (BadMenuInputException e) {
-			e.printStackTrace();
-			return;
+
+			break;
 		}
 
 		System.out.println("변경하고자 하는 이메일을 입력해주세요.(현재값:" + contact.getEmail() + ")\n" + "변경하지 않으려면 엔터를 눌러주세요. >");
@@ -106,22 +117,40 @@ public class SmartPhone2 {
 					.println("변경하고자하는 직급을 입력해주세요.(현재값: " + companyContact.getManager() + ")\n" + "변경하지않으려면 엔터를 치세요 >");
 			String manager = sc.nextLine();
 
-			if (checkString(newName) && checkString(newPhoneNumber) && checkString(newEmail) && checkString(newAddress)
-					&& checkString(newBirthday) && checkString(newGroup) && checkString(company)
-					&& checkString(division) && checkString(manager)) {
+			if (checkString(newName)) {
 				companyContact.setName(newName);
+			}
+
+			if (checkString(newPhoneNumber)) {
 				companyContact.setPhoneNumber(newPhoneNumber);
+			}
+
+			if (checkString(newEmail)) {
 				companyContact.setEmail(newEmail);
+			}
+
+			if (checkString(newAddress)) {
 				companyContact.setAddress(newAddress);
+			}
+
+			if (checkString(newBirthday)) {
 				companyContact.setBirthday(newBirthday);
+			}
+
+			if (checkString(newGroup)) {
 				companyContact.setGroup(newGroup);
+			}
+
+			if (checkString(company)) {
 				companyContact.setCompany(company);
+			}
+
+			if (checkString(division)) {
 				companyContact.setDivision(division);
+			}
+
+			if (checkString(manager)) {
 				companyContact.setManager(manager);
-			} else {
-				System.out.println("유효한 문자열이 아닙니다. 정보를 저장하지 않습니다.");
-				System.out.println();
-				return;
 			}
 
 		} else if (contact instanceof CustomerContact) {
@@ -140,22 +169,40 @@ public class SmartPhone2 {
 					"변경하고자하는 담당자 이름을 입력해주세요.(현재값: " + customerContact.getManager() + ")\n" + "변경하지않으려면 엔터를 치세요 >");
 			String manager = sc.nextLine();
 
-			if (checkString(newName) && checkString(newPhoneNumber) && checkString(newEmail) && checkString(newAddress)
-					&& checkString(newBirthday) && checkString(newGroup) && checkString(company) && checkString(product)
-					&& checkString(manager)) {
+			if (checkString(newName)) {
 				customerContact.setName(newName);
+			}
+
+			if (checkString(newPhoneNumber)) {
 				customerContact.setPhoneNumber(newPhoneNumber);
+			}
+
+			if (checkString(newEmail)) {
 				customerContact.setEmail(newEmail);
+			}
+
+			if (checkString(newAddress)) {
 				customerContact.setAddress(newAddress);
+			}
+
+			if (checkString(newBirthday)) {
 				customerContact.setBirthday(newBirthday);
+			}
+
+			if (checkString(newGroup)) {
 				customerContact.setGroup(newGroup);
+			}
+
+			if (checkString(company)) {
 				customerContact.setCompany(company);
+			}
+
+			if (checkString(product)) {
 				customerContact.setProduct(product);
+			}
+
+			if (checkString(manager)) {
 				customerContact.setManager(manager);
-			} else {
-				System.out.println("유효한 문자열이 아닙니다. 정보를 저장하지 않습니다.");
-				System.out.println();
-				return;
 			}
 		}
 
@@ -172,7 +219,7 @@ public class SmartPhone2 {
 
 		int searchIndex = getIndex(name);
 
-		if (searchIndex < 0 || searchIndex >= maxSize) {
+		if (searchIndex < 0 || searchIndex >= MAX_SIZE) {
 			System.out.println("삭제하고자하는 이름의 데이터가 존재하지 않습니다.");
 			return;
 		}
@@ -194,7 +241,7 @@ public class SmartPhone2 {
 
 		int searchIndex = getIndex(name);
 
-		if (searchIndex < 0 || searchIndex >= maxSize) {
+		if (searchIndex < 0 || searchIndex >= MAX_SIZE) {
 			System.out.println("검색한 이름 " + name + " 의 정보가 없습니다.");
 		} else {
 			System.out.println("검색의 결과 ===========");
@@ -240,37 +287,46 @@ public class SmartPhone2 {
 		System.out.println("입력을 시작합니다.");
 
 		System.out.print("이름 > ");
-		name = getString();
 
-		try {
-			if (getIndex(name) != -1) {
-				throw new BadMenuInputException("중복된 이름입니다.");
-			}
-			if (checkName(name) == false) {
-				throw new BadMenuInputException("한글, 영문 대소문자만 입력 가능합니다.");
-			}
+		while (true) {
 
-		} catch (BadMenuInputException e) {
-			e.printStackTrace();
-			return;
+			name = getString();
+
+			try {
+				if (getIndex(name) != -1) {
+					throw new BadMenuInputException("중복된 이름입니다.");
+				}
+				if (checkName(name) == false) {
+					throw new BadMenuInputException("한글, 영문 대소문자만 입력 가능합니다.");
+				}
+
+			} catch (BadMenuInputException e) {
+				e.printStackTrace();
+				continue;
+			}
+			
+			break;
 		}
 
 		System.out.print("전화번호 > ");
-		phoneNumber = getString();
 
-		checkPhoneNumber(phoneNumber);
+		while (true) {
 
-		if (checkPhoneNumber(phoneNumber) == false) {
-			return;
-		}
-		
-		try {
-			if (getPhoneNumberIndex(phoneNumber) != -1) {
-				throw new BadMenuInputException("중복된 번호입니다.");
+			phoneNumber = getString();
+
+			try {
+				if (getPhoneNumberIndex(phoneNumber) != -1) {
+					throw new BadMenuInputException("중복된 번호입니다.");
+				}
+				if (checkPhoneNumber(phoneNumber) == false) {
+					throw new BadMenuInputException("정상적인 번호를 입력해주세요.");
+				}
+			} catch (BadMenuInputException e) {
+				e.printStackTrace();
+				continue;
 			}
-		} catch (BadMenuInputException e) {
-			e.printStackTrace();
-			return;
+
+			break;
 		}
 
 		System.out.print("이메일 > ");
@@ -287,9 +343,8 @@ public class SmartPhone2 {
 
 		Contact contact = null;
 
-		// 분기 1. 회사 2. 거래처
 		if (select == 1) {
-			// CompanyContact 인스턴스 생성
+	
 			System.out.println("회사 이름 >> ");
 			String company = getString();
 			System.out.println("부서 이름 >> ");
@@ -301,7 +356,6 @@ public class SmartPhone2 {
 					manager);
 
 		} else {
-			// CustomerContact 인스턴스 생성
 
 			System.out.println("거래처 이름 >> ");
 			String company = getString();
@@ -317,8 +371,6 @@ public class SmartPhone2 {
 		contacts[numOfContact++] = contact;
 	}
 
-	// Scanner 를 통해서 사용자에게 문자열을 받아서 반환하는 메소드
-	// 입력 문자가 공백일 경우 다시 입력하도록 하는 기능
 	private String getString() {
 		String str = null;
 
@@ -364,37 +416,6 @@ public class SmartPhone2 {
 
 	}
 
-	/*
-	 * private String getName() { String name = null;
-	 * 
-	 * while (true) { name = sc.nextLine(); if (name != null && name.trim().length()
-	 * != 0) { boolean check = false; for (int i = 0; i < numOfContact; i++) { if
-	 * (name.equals(contacts[i].getName())) { check = true; break; } }
-	 * 
-	 * if (check) { System.out.println("같은 이름의 데이터가 존재합니다. \n다시입력하세요."); //
-	 * continue; } else { break; } }
-	 * 
-	 * }
-	 * 
-	 * return name; }
-	 */
-
-	/*
-	 * private String getPhoneNumber() { String phoneNumber = null;
-	 * 
-	 * while (true) { phoneNumber = sc.nextLine(); if (name != null &&
-	 * phoneNumber.trim().length() != 0) { boolean check = false; for (int i = 0; i
-	 * < numOfContact; i++) { if (phoneNumber.equals(contacts[i].getphoneNumber()))
-	 * { check = true; break; } }
-	 * 
-	 * if (check) { System.out.println("같은 전화번호의 데이터가 존재합니다. \n다시입력하세요."); //
-	 * continue; } else { break; } }
-	 * 
-	 * }
-	 * 
-	 * return name; }
-	 */
-
 	private boolean checkString(String str) {
 		boolean result = false;
 
@@ -426,11 +447,11 @@ public class SmartPhone2 {
 			Long.parseLong(str.replace("-", ""));
 
 		} catch (Exception e) {
-			System.out.println("정상적인 전화번호를 입력해주세요.");
 			return false;
 		}
 
 		return true;
+
 	}
 
 	void printMenu() {
