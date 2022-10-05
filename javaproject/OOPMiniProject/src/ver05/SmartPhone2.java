@@ -52,7 +52,7 @@ public class SmartPhone2 {
 
 		String newPhoneNumber = sc.nextLine();
 
-		if (getIndex(newPhoneNumber) != -1) {
+		if (getPhoneNumberIndex(newPhoneNumber) != -1) {
 			System.out.println("중복된 전화번호입니다.");
 			return;
 		}
@@ -233,7 +233,7 @@ public class SmartPhone2 {
 		System.out.print("전화번호 > ");
 		phoneNumber = getString();
 
-		if (getIndex(phoneNumber) != -1) {
+		if (getPhoneNumberIndex(phoneNumber) != -1) {
 			System.out.println("중복된 전화번호입니다.");
 			return;
 		}
@@ -313,6 +313,22 @@ public class SmartPhone2 {
 		return searchIndex;
 
 	}
+	
+	private int getPhoneNumberIndex(String phoneNumber) {
+		int searchIndex = -1;
+
+		for (int i = 0; i < numOfContact; i++) {
+
+			if (contacts[i].getPhoneNumber().equals(phoneNumber)) {
+				searchIndex = i;
+				break;
+			}
+		}
+
+		return searchIndex;
+
+	}
+	
 
 	/*
 	 * private String getName() { String name = null;
