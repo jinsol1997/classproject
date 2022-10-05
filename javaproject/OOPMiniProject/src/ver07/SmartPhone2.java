@@ -225,11 +225,8 @@ public class SmartPhone2 {
 			return;
 		}
 
-		for (int i = searchIndex; i < numOfContact - 1; i++) {
-			contacts.get(i) = contacts.get(i+1);
-
-		}
-		numOfContact--;
+		contacts.remove(searchIndex);
+		
 		System.out.println("데이터가 삭제되었습니다.");
 
 	}
@@ -255,12 +252,12 @@ public class SmartPhone2 {
 
 		System.out.println("전체 데이터를 출력합니다. ============");
 
-		if (numOfContact == 0) {
+		if (contacts.size() == 0) {
 			System.out.println("입력된 정보가 없습니다.");
 			return;
 		}
 
-		for (int i = 0; i < numOfContact; i++) {
+		for (int i = 0; i < contacts.size(); i++) {
 			System.out.println();
 			contacts.get(i).showInfo();
 			System.out.println();
@@ -365,7 +362,7 @@ public class SmartPhone2 {
 					manager);
 		}
 
-		contacts[numOfContact++] = contact;
+		contacts.add(contact);
 	}
 
 	private String getString() {
@@ -386,7 +383,7 @@ public class SmartPhone2 {
 	private int getIndex(String name) {
 		int searchIndex = -1;
 
-		for (int i = 0; i < numOfContact; i++) {
+		for (int i = 0; i < contacts.size(); i++) {
 
 			if (contacts.get(i).getName().equals(name)) {
 				searchIndex = i;
@@ -401,7 +398,7 @@ public class SmartPhone2 {
 	private int getPhoneNumberIndex(String phoneNumber) {
 		int searchIndex = -1;
 
-		for (int i = 0; i < numOfContact; i++) {
+		for (int i = 0; i < contacts.size(); i++) {
 
 			if (contacts.get(i).getPhoneNumber().equals(phoneNumber)) {
 				searchIndex = i;
