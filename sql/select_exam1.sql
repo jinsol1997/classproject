@@ -35,13 +35,13 @@ where hiredate between '81/2/20' and '81/5/1';
 select ename, deptno
 from emp
 where deptno in(20, 30)
-order by ename;
+order by ename desc;
 
 -- 8. 사원의 급여가 2000에서 3000사이에 포함되고 부서번호가 20 또는 30인 사원의 이름, 급여와 부서번호를 출력, 이름순(오름차순)으로 출력하시오.
 select ename, sal, deptno
 from emp
 where sal between 2000 and 3000 and deptno in(20, 30)
-order by ename desc;
+order by ename;
 
 -- 9. 1981년도에 입사한 사원의 이름과 입사일을 출력하시오. (like 연산자와 와일드카드 사용)
 select ename, hiredate
