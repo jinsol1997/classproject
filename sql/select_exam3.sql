@@ -48,9 +48,8 @@ from emp
 group by job;
 
 -- 26. 관리자 수를 출력하시오.
-select count(*)
-from emp
-where job = 'MANAGER';
+select count(distinct mgr)
+from emp;
 
 -- 27. 급여 최고액, 급여 최저액의 차액을 출력하시오.
 select max(sal) - min(sal)
