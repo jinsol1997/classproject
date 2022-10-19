@@ -1,13 +1,14 @@
-package chapter15;
+package DepthFirstSearch;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class test {
 
 	public static int solution(int[] cards) {
 		int answer = 0;
 		boolean[] visited = new boolean[cards.length];
-		ArrayList<Integer> li = new ArrayList<Integer>();
+		ArrayList<Integer> li = new ArrayList<>();
 
 		for (int i = 0; i < cards.length; i++) {
 			if (!visited[i]) {
@@ -19,22 +20,7 @@ public class test {
 			return answer;
 		}
 		
-		for(int i=1; i<li.size(); i++) {
-			if(li.get(0)<li.get(i)) {
-				int temp = li.get(0);
-				li.set(0, li.get(i));
-				li.set(i, temp);
-			}
-		}
-		for(int i=2; i<li.size(); i++) {
-			if(li.get(1)<li.get(i)) {
-				int temp = li.get(1);
-				li.set(1,  li.get(i));
-				li.set(i,  temp);
-			}
-		}
-		
-		
+		Collections.sort(li, Collections.reverseOrder());
 		answer = li.get(0) * li.get(1);
 		return answer;
 	}
