@@ -1,21 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 body {
-  width: 800px;
-  height: 800px;
-  background-color: #eee;
+  background-color: #f0f2f5;
 }
-#wraper {
+#wrap {
   overflow: hidden;
+  width: 900px;
+  margin: 0 auto;
 }
 #leftBox {
   margin-top: 150px;
   float: left;
-  width: 400px;
+  width: 500px;
   height: 700px;
   text-align: center;
+
 }
 #leftBox > span {
-  font-size: 32px;
+  font-size: 28px;
   font-family: "Nanum Gothic", sans-serif;
 }
 #leftBox > img {
@@ -28,6 +29,12 @@ body {
   float: right;
   text-align: center;
 }
+#rightBox > p {
+  font-size: small;
+}
+#rightBox > a {
+  color: black;
+}
 #rightWrap {
   background-color: white;
   border-radius: 5px;
@@ -37,20 +44,42 @@ body {
   border-radius: 5px;
   height: 50px;
   width: 300px;
-  margin: 5px;
+  margin: 10px;
   margin-left: 50px;
   margin-right: 50px;
+  padding: 0px 10px;
+  font-size: large;
+  border: 1px solid #ddd;
+}
+#rightWrap > a {
+  font-size: small;
 }
 
-#rightBox > p {
-}
 #login {
   font-size: large;
   font-weight: bold;
   font-family: "Nanum Gothic", sans-serif;
-  background-color: skyblue;
+  background-color: #1877f2;
   color: white;
+  border : 0px;
 }
 #create {
-  background-color: green;
+  font-size: large;
+  font-weight: bold;
+  color: white;
+  font-family: "Nanum Gothic", sans-serif;
+  background-color: #42b72a;
+  border-radius: 5px;
+  height: 50px;
+  border: 0px;
+  margin: 20px;
+}
+footer {
+  background-color: white;
+}
+a:-webkit-any-link {
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none
 }
