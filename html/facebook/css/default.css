@@ -75,11 +75,16 @@ body {
   margin: 20px;
 }
 footer {
+  font-size: small;
   background-color: white;
+  text-align: center;
 }
 a:-webkit-any-link {
   color: black;
   font-weight: bold;
   cursor: pointer;
   text-decoration: none
+}
+hr{
+  border: 1px solid #f0f2f5;
 }
