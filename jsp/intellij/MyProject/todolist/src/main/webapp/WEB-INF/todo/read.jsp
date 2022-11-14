@@ -13,13 +13,13 @@
 <body>
     <h1>Todo Read</h1>
 
-    ${todo}
+<%--    ${todo}--%>
 
     <table>
-        <tr>
-            <td>번호</td>
-            <td><input type="text" name="index" value="${param.index}" readonly></td>
-        </tr>
+<%--        <tr>--%>
+<%--            <td>번호</td>--%>
+<%--            <td><input type="text" name="index" value="${param.index}" readonly></td>--%>
+<%--        </tr>--%>
         <tr>
             <td>할일</td>
             <td><input type="text" name="todo" value="${todo.todo}" readonly></td>
