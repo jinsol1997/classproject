@@ -17,7 +17,7 @@
     <table>
         <tr>
             <td>번호</td>
-            <td><input type="text" name="todo" value="${param.index}" readonly></td>
+            <td><input type="text" name="index" value="${param.index}" readonly></td>
         </tr>
         <tr>
             <td>할일</td>

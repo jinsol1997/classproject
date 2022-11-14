@@ -1,6 +1,6 @@
 package com.example.todolist.controller;
 
-import com.example.todolist.service.TodoService;
+import com.example.todolist.service.TodoSelectAllService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -14,7 +14,7 @@ public class TodoListController extends HttpServlet {
 
         String title = "Todo List";
         request.setAttribute("title", title);
-        request.setAttribute("todoList", new TodoService().getTodoList());
+        request.setAttribute("todoList", TodoSelectAllService.getInstance().getTodoList());
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/todo/list.jsp");
         dispatcher.forward(request, response);

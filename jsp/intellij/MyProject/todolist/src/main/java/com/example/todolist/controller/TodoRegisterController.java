@@ -1,5 +1,9 @@
 package com.example.todolist.controller;
 
+import com.example.todolist.dao.TodoDao;
+import com.example.todolist.domain.TodoDTO;
+import com.example.todolist.service.TodoRegisterService;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -27,6 +31,12 @@ public class TodoRegisterController extends HttpServlet {
 
         System.out.println(todo);
         System.out.println(dueDate);
+
+        TodoDTO dto = new TodoDTO(todo, dueDate, false);
+        int result = TodoRegisterService.getInstance().doRegister(dto);
+        if(result <= 0){
+            System.out.println("등록 실패");
+        }
 
         response.sendRedirect("/todo/list");
     }

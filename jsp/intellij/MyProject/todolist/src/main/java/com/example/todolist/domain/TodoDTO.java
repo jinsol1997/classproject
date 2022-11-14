@@ -17,6 +17,12 @@ public class TodoDTO {
         this.finished = finished;
     }
 
+    public TodoDTO(String todo, String dueDate, boolean finished) {
+        this.todo = todo;
+        this.dueDate = dueDate;
+        this.finished = finished;
+    }
+
     public long getIndex() {
         return index;
     }
