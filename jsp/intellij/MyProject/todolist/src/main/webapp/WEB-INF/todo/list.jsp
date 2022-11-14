@@ -27,9 +27,9 @@
             <th>기간</th>
             <th>완료여부</th>
         </tr>
-        <c:forEach var="todo" items="${todoList}">
+        <c:forEach var="todo" items="${todoList}" varStatus="loop">
         <tr>
-            <td>${todo.index}</td>
+            <td>${loop.count}</td>
             <td><a href="/todo/read?index=${todo.index}">${todo.todo}</a></td>
             <td>${todo.dueDate}</td>
             <td>${todo.finished ? '완료' : '진행중'}</td>

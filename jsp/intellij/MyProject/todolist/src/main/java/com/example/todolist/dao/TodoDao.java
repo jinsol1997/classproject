@@ -42,23 +42,13 @@ public class TodoDao {
 
         int result = 0;
 
-        int index = 0;
-        String getIndex = "select max(todoindex) from todolist";
-        @Cleanup PreparedStatement temp = conn.prepareStatement(getIndex);
-        @Cleanup ResultSet rs = temp.executeQuery();
-        if(rs.next()){
-            index = rs.getInt("max(todoindex)")+1;
-        }
-
-
-        String sql = "insert into todolist values (?, ?, ?, ?)";
+        String sql = "insert into todolist (todo, dueDate, finished) values (?, ?, ?)";
 
         @Cleanup PreparedStatement pstmt = conn.prepareStatement(sql);
 
-        pstmt.setInt(1, index);
-        pstmt.setString(2, dto.getTodo());
-        pstmt.setString(3, dto.getDueDate());
-        pstmt.setBoolean(4, dto.isFinished());
+        pstmt.setString(1, dto.getTodo());
+        pstmt.setString(2, dto.getDueDate());
+        pstmt.setBoolean(3, dto.isFinished());
 
         result = pstmt.executeUpdate();
 
