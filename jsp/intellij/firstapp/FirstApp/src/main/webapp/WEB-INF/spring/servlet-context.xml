@@ -11,7 +11,7 @@
        https://www.springframework.org/schema/context/spring-context.xsd">
 
     <mvc:annotation-driven></mvc:annotation-driven>
-    <context:component-scan base-package="com.todo.todospring"></context:component-scan>
+    <context:component-scan base-package="com.firstcoding.firstapp"></context:component-scan>
 
     <mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
     <mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
@@ -28,11 +28,10 @@
         <property name="defaultEncoding" value="UTF-8"/>
     </bean>
 
-    <!-- 로그인 체크하는 인터셉터 등록 -->
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/todo/**"/>
-            <bean class="com.todo.todospring.interceptor.AuthCheckInterceptor"/>
+            <mvc:mapping path="/mypage/**"/>
+            <bean class="com.firstcoding.firstapp.interceptor.AuthCheckInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 

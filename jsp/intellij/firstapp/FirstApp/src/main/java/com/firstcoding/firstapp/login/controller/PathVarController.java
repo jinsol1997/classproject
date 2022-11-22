@@ -1,4 +1,4 @@
-package com.todo.todospring.controller;
+package com.firstcoding.firstapp.login.controller;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;

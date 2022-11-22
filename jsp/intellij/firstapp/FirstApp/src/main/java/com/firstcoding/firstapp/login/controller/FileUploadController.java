@@ -1,7 +1,6 @@
-package com.todo.todospring.controller;
+package com.firstcoding.firstapp.login.controller;
 
-import com.todo.todospring.domain.Report;
-import lombok.SneakyThrows;
+import com.firstcoding.firstapp.login.domain.Report;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

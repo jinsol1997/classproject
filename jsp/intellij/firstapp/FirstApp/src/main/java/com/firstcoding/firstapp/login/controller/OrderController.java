@@ -1,6 +1,6 @@
-package com.todo.todospring.controller;
+package com.firstcoding.firstapp.login.controller;
 
-import com.todo.todospring.domain.OrderCommand;
+import com.firstcoding.firstapp.login.domain.OrderCommand;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

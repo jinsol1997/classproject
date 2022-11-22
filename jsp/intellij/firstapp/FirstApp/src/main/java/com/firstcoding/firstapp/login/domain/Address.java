@@ -1,4 +1,4 @@
-package com.todo.todospring.domain;
+package com.firstcoding.firstapp.login.domain;
 
 import lombok.*;
 

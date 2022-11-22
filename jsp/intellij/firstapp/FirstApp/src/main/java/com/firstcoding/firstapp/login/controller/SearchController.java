@@ -1,4 +1,4 @@
-package com.todo.todospring.controller;
+package com.firstcoding.firstapp.login.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;

@@ -1,60 +1,41 @@
 package com.todo.todospring.controller;
 
-import com.todo.todospring.domain.LoginRequest;
+import com.todo.todospring.domain.Member;
+import com.todo.todospring.service.LoginService;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.Map;
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 @RequestMapping("/login")
 @Log4j2
 public class LoginController {
 
-    //@RequestMapping(method = RequestMethod.GET)
+    @Autowired
+    private LoginService loginService;
+
     @GetMapping
-    public String getLoginForm(Model model) {
-        model.addAttribute("msg", "아이디와 패스워드를 반드시 입력하세요");
-        return "login/loginform";    // /WEB-INF/views/login/form.jsp
+    public String loginForm(){
+        return "member/loginForm";
     }
 
-    //@RequestMapping(method = RequestMethod.POST)
     @PostMapping
-    public String login(@RequestParam("userid") String uid,
-                        String pw,
-                        String p,
-                        //@RequestParam(value = "p", required = true) String page
-                        @RequestParam(value = "p", defaultValue = "1") String page,
-                        HttpServletRequest request,
-                        HttpServletResponse response,
-                        @ModelAttribute("req") LoginRequest loginRequest,
-                        @RequestParam Map paramMap
-    ) {
+    public String login(@RequestParam("uid") String uid, @RequestParam("pw") String pw, HttpServletRequest request) throws Exception {
 
-        String uid2 = request.getParameter("uid");
-        String pw2 = request.getParameter("pw");
+        Member member = loginService.login(uid, pw);
 
-        log.info("uid => " + uid);
-        log.info("pw => " + pw);
-        log.info("p => " + p);
-        log.info("page => " + page);
-        log.info("uid2 => " + uid2);
-        log.info("pw2 => " + pw2);
-        log.info("loginRequest => " + loginRequest);
-        log.info("paramMap => " + paramMap);
+        if(member != null){
+            // 로그인 처리
+            HttpSession session = request.getSession();
+            session.setAttribute("loginInfo", member.toLoginInfo());
+        }
 
-        request.getSession().setAttribute("loginInfo", uid);
-
-        return "redirect:/mypage/mypage1";
-    }
-
-    @GetMapping("/info")
-    public String getInfo() {
-        return "login/info";
+        return "redirect:/index.jsp";
     }
 
 }
