@@ -21,8 +21,8 @@
     <h1>Todo Project</h1>
 
     <ul>
-        <li>프로젝트 이름 : </li>
-        <li>기능 : </li>
+        <li>프로젝트 이름 : TODO PROJECT</li>
+        <li>기능 : 회원가입 & 로그인/아웃 및 상태체크(interceptor), CRUD 기능 구현, 파일 업로드, Filter(UTF-8), Handler를 통한 커스텀 오류 페이지</li>
         <li> <a href="todo/list"> Todo List </a> </li>
         <c:if test="${loginInfo eq null}">
             <li><a href="/login"> 로그인 </a></li>

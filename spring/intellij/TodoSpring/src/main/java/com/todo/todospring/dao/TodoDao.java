@@ -4,10 +4,7 @@ import com.todo.todospring.domain.TodoDTO;
 import lombok.Cleanup;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 @Repository
@@ -23,7 +20,7 @@ public class TodoDao {
         ArrayList<TodoDTO> result = new ArrayList<>();
 
         while (rs.next()){
-            result.add(new TodoDTO(rs.getLong(1), rs.getString(2), rs.getString(3), rs.getBoolean(4)));
+            result.add(new TodoDTO(rs.getLong(1), rs.getString(2), rs.getDate(3).toLocalDate(), rs.getBoolean(4)));
         }
 
         return result;
@@ -38,7 +35,7 @@ public class TodoDao {
         @Cleanup PreparedStatement pstmt = conn.prepareStatement(sql);
 
         pstmt.setString(1, dto.getTodo());
-        pstmt.setString(2, dto.getDueDate());
+        pstmt.setDate(2, Date.valueOf(dto.getDueDate()));
         pstmt.setBoolean(3, dto.isFinished());
 
         result = pstmt.executeUpdate();
@@ -53,7 +50,7 @@ public class TodoDao {
 
         @Cleanup PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setString(1, dto.getTodo());
-        pstmt.setString(2, dto.getDueDate());
+        pstmt.setDate(2, Date.valueOf(dto.getDueDate()));
         pstmt.setBoolean(3, dto.isFinished());
         pstmt.setLong(4, dto.getIndex());
 
@@ -71,7 +68,7 @@ public class TodoDao {
         @Cleanup ResultSet rs = pstmt.executeQuery();
         TodoDTO result = null;
         if(rs.next()){
-            result = new TodoDTO(rs.getInt("todoIndex"), rs.getString("todo"), rs.getString("dueDate"), rs.getBoolean("finished"));
+            result = new TodoDTO(rs.getInt("todoIndex"), rs.getString("todo"), rs.getDate("dueDate").toLocalDate(), rs.getBoolean("finished"));
         }
         return result;
     }

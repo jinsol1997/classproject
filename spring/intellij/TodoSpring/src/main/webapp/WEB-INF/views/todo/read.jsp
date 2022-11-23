@@ -30,7 +30,7 @@
         </tr>
         <tr>
             <td>상태</td>
-            <td><input type="checkbox" name="finished" ${todo.finished ? 'checked' : 'unchecked'} readonly></td>
+            <td><input type="checkbox" name="finished" ${todo.finished ? 'checked' : 'unchecked'} onclick="return false"></td>
         </tr>
     </table>
 

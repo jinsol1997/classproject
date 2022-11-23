@@ -1,4 +1,4 @@
-package com.example.springmvc;
+package com.firstcoding.mvc.springmvc;
 
 import java.io.*;
 import javax.servlet.http.*;

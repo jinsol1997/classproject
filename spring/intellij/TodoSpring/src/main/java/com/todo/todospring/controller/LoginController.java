@@ -1,5 +1,6 @@
 package com.todo.todospring.controller;
 
+import com.todo.todospring.domain.LoginRequest;
 import com.todo.todospring.domain.Member;
 import com.todo.todospring.service.LoginService;
 import lombok.extern.log4j.Log4j2;
@@ -25,9 +26,9 @@ public class LoginController {
     }
 
     @PostMapping
-    public String login(@RequestParam("uid") String uid, @RequestParam("pw") String pw, HttpServletRequest request) throws Exception {
+    public String login(LoginRequest loginRequest, HttpServletRequest request) throws Exception {
 
-        Member member = loginService.login(uid, pw);
+        Member member = loginService.login(loginRequest.getUid(), loginRequest.getPw());
 
         if(member != null){
             // 로그인 처리
