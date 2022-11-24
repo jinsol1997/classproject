@@ -1,32 +1,20 @@
 package com.todo.todospring.service;
 
-import com.todo.todospring.dao.TodoDao;
 import com.todo.todospring.domain.TodoDTO;
-import com.todo.todospring.util.ConnectionUtil;
-import lombok.Cleanup;
+import com.todo.todospring.mapper.TodoMapper;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Connection;
-
+@Log4j2
 @Service
 public class TodoModifyService {
 
-    @Autowired
-    private TodoDao dao;
+    @Autowired(required = false)
+    private TodoMapper todoMapper;
 
-
-    public int doModify(TodoDTO dto){
-
-        int result = 0;
-
-        try {
-            @Cleanup Connection conn = ConnectionUtil.getInstance().getConnection();
-            result = dao.modify(conn, dto);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-        return result;
+    public int doModify(TodoDTO todoDTO) {
+        log.info("modify service 진입.. dto = " + todoDTO);
+        return todoMapper.modify(todoDTO);
     }
 }

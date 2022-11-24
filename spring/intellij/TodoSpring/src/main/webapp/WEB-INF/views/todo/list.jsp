@@ -30,7 +30,7 @@
         <c:forEach var="todo" items="${todoList}" varStatus="loop">
         <tr>
             <td>${loop.count}</td>
-            <td><a href="/todo/read?index=${todo.index}">${todo.todo}</a></td>
+            <td><a href="/todo/read?index=${todo.todoindex}">${todo.todo}</a></td>
             <td>${todo.dueDate}</td>
             <td>${todo.finished ? '완료' : '진행중'}</td>
         </tr>

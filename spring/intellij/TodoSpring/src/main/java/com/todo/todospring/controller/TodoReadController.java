@@ -14,8 +14,8 @@ public class TodoReadController {
     private TodoReadService todoReadService;
 
     @GetMapping("/todo/read")
-    public void readTodo(Model model, @RequestParam("index") int index){
-        model.addAttribute("todo", todoReadService.doRead(index));
+    public void readTodo(Model model, @RequestParam("index") int todoindex){
+        model.addAttribute("todo", todoReadService.doRead(todoindex));
     }
 
 }

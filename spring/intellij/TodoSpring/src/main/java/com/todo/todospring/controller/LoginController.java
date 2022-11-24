@@ -28,7 +28,7 @@ public class LoginController {
     @PostMapping
     public String login(LoginRequest loginRequest, HttpServletRequest request) throws Exception {
 
-        Member member = loginService.login(loginRequest.getUid(), loginRequest.getPw());
+        Member member = loginService.login(loginRequest);
 
         if(member != null){
             // 로그인 처리

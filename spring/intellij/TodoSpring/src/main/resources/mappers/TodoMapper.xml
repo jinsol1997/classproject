@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todo.todospring.mapper.TodoMapper">
+
+    <select id="selectAll" resultType="com.todo.todospring.domain.TodoDTO">
+        select * from todolist
+    </select>
+
+    <insert id="register" parameterType="com.todo.todospring.domain.TodoDTO">
+        insert into todolist (todo, dueDate, finished) values (#{todo}, #{dueDate}, #{finished})
+    </insert>
+
+    <update id="modify" parameterType="com.todo.todospring.domain.TodoDTO">
+        update todolist set todo=#{todo}, duedate=#{dueDate}, finished=#{finished} where todoindex=#{todoindex}
+    </update>
+
+    <select id="read" resultType="com.todo.todospring.domain.TodoDTO">
+        select * from todolist where todoindex=#{todoindex}
+    </select>
+    
+    <delete id="remove">
+        delete from todolist where todoindex=#{todoindex}
+    </delete>
+
+</mapper>

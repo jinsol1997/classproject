@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Setter
 public class TodoDTO {
 
-    private long index;
+    private long todoindex;
     private String todo;
     private LocalDate dueDate;
     private boolean finished;
