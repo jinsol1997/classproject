@@ -1,54 +1,49 @@
 package BruteForce_BackTracking;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class MaxGap {
-	
 
-	static int[] arr = {8, 20, 1, 15, 4, 10};
-	static int[] test1 = {8, 20, 1, 15, 4, 10};
+	static int N;
+	static int[] input, numbers;
+	static boolean[] isSelected;
 
-	
-	// n은 array의 길이
-	int answer(int n, int[] array) {
-		
-		int[] result = new int[n];
-
-		double temp = 0;
-		for(int i : array) {
-			temp += array[i];
-		}
-		
-		temp /= n;
-		
-		int temp1 = 200;
-		int temp2 = 200;
-		
-		for(int i : array) {
-			if(temp - array[i] < temp1 ){
-				temp1 = array[i];
-			}
-		}
-		
-		for(int i : array) {
-			if(temp - array[i] < temp2 && array[i] != temp1) {
-				temp2 = array[i];
-			}
-		}
-		
-		
-		
-		
-		return 1;
-	}
-	
 	public static void main(String[] args) {
-		
-		int test = 0;
-		for(int i=0; i<test1.length; i++) {
-			test += test1[i];
+
+		Scanner sc = new Scanner(System.in);
+		N = sc.nextInt();
+
+		input = new int[N];
+		numbers = new int[N];
+		isSelected = new boolean[N];
+
+		for (int i = 0; i < N; i++) {
+			input[i] = sc.nextInt();
 		}
-		System.out.println(test);
-		
-		System.out.println((20+15+10+8+4+1)/6);
+		sc.close();
+
+		permutation(0);
+	}
+
+	public static void permutation(int cnt) {
+
+		if (cnt == N) {
+			System.out.println(Arrays.toString(numbers));
+			return;
+		}
+
+		for (int i = 0; i < N; i++) {// 모든 수를 한 번씩 체크할 것이기 때문에!
+			if (isSelected[i])
+				continue;
+
+			numbers[cnt] = input[i];
+			isSelected[i] = true;
+			permutation(cnt + 1);
+			isSelected[i] = false;
+
+		}
+
 	}
 
 }
