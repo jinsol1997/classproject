@@ -6,6 +6,7 @@ import com.todo.todospring.mapper.MemberMapper;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -18,6 +19,7 @@ public class MemberRegService {
     @Autowired(required = false)
     private MemberMapper memberMapper;
 
+    @Transactional
     public int memberReg(MemberRegRequest regRequest, HttpServletRequest request) throws Exception {
 
         String newFileName = null;

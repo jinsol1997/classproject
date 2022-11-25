@@ -27,6 +27,7 @@ public class MaxGap {
 	}
 
 	public static void permutation(int cnt) {
+		System.out.println("permutation 진입...");
 
 		if (cnt == N) {
 			System.out.println(Arrays.toString(numbers));
@@ -41,6 +42,7 @@ public class MaxGap {
 			isSelected[i] = true;
 			permutation(cnt + 1);
 			isSelected[i] = false;
+			System.out.println("permutation for문 내부, i : " + i + "  cnt : " + cnt);
 
 		}
 
