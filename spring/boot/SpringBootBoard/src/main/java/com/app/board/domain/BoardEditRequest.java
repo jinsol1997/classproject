@@ -7,11 +7,12 @@ import org.springframework.web.multipart.MultipartFile;
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder
 @ToString
+@Builder
 public class BoardEditRequest {
+
     private int bno;
-    private int currPageNum;
+    private int curPageNum;
     private String title;
     private String writer;
     private String content;
@@ -19,6 +20,13 @@ public class BoardEditRequest {
     private MultipartFile formFile;
 
     public BoardDTO toBoardDTO(){
-        return BoardDTO.builder().bno(bno).title(title).writer(writer).content(content).photo(oldFile).build();
+        return BoardDTO.builder()
+                .bno(bno)
+                .writer(writer)
+                .title(title)
+                .content(content)
+                .photo(oldFile)
+                .build();
     }
+
 }

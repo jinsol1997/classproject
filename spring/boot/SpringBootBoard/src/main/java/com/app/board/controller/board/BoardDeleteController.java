@@ -13,9 +13,12 @@ public class BoardDeleteController {
     private BoardDeleteService boardDeleteService;
 
     @GetMapping("/board/delete")
-    public String delete(@RequestParam("bno") int bno){
+    public String delete(
+            @RequestParam("bno") int bno
+    ){
 
         boardDeleteService.delete(bno);
+
         return "redirect:/board/list";
     }
 }

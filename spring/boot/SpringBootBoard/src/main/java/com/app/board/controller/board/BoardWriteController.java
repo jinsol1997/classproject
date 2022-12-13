@@ -21,18 +21,20 @@ public class BoardWriteController {
 
     @GetMapping
     public void writeForm(){
-
     }
 
     @PostMapping
-    public String write(BoardWriteRequest boardWriteRequest){
+    public String write(
+            BoardWriteRequest boardWriteRequest
+    ){
 
-        log.info(">>>>>>>>>>>>>>>>>>>>>" + boardWriteRequest);
+        log.info(">>>>>>>>>>>>>>>>> " + boardWriteRequest);
 
         String absolutePath = new File("").getAbsolutePath();
-        log.info(">>>" + absolutePath);
+        log.info(">>> path : " + absolutePath);
 
         boardWriteService.write(boardWriteRequest);
+
 
         return "redirect:/board/list";
     }

@@ -15,25 +15,29 @@ public class BoardDeleteService {
     @Autowired
     private BoardMapper boardMapper;
 
-    public int delete(int bno) {
+    public int delete(int bno){
 
-        // 삭제하려는 게시물의 데이터
+        // 삭제 하려는 게시물의 데이터
         BoardDTO boardDTO = boardMapper.selectByBno(bno);
 
         // 삭제 결과
         int result = boardMapper.deleteByBno(bno);
 
-        log.info(boardDTO.getPhoto());
-
         // 해당 게시물이 DB에서 삭제되고, 해당 게시물의 사진 이름을 가지고 있다면 -> 파일을 삭제
-        if (result > 0 && boardDTO.getPhoto() != null) {
-            File delFile = new File(new File("").getAbsolutePath(), "photo\\" + boardDTO.getPhoto());
-            log.info(delFile + "@@@@@@@@@@@@@@");
-            if (delFile.exists()) {
-                delFile.delete();
+        if(result>0 && boardDTO.getPhoto()!=null){
+
+            File delFile = new File(new File("").getAbsolutePath(), "photo"+File.separator+boardDTO.getPhoto());
+
+            log.info(delFile.getAbsolutePath());
+
+            if(delFile.exists()){
+                log.info("파일 존재 시 진입.............");
+                if(delFile.delete())
+                    log.info("게시물 삭제시 파일 삭제 !!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             }
         }
 
         return result;
     }
+
 }
