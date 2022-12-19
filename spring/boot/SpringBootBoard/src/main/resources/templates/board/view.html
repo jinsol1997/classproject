@@ -20,12 +20,12 @@
 
                 $.each(data, function (index, item) {
 
-                    let html = '<tr><td class="col-2">' + item.replyer + '</td>'
+                    let html = '<tr><td class="col-2">' + item.replyer.username + '</td>'
                     html += '<td class="col">' + item.reply + '</td>'
                     html += '<td class="col-2">' + item.replydate + '</td>'
                     html += '<td class="col-2"> ' +
-                        '<a href="javascript:showEditModal(' + item.rno + ')" class="badge bg-warning text-decoration-none">수정</a> ' +
-                        '<a href="javascript:deleteReply(' + item.rno + ')" class="badge bg-danger text-decoration-none">삭제</a> ' +
+                        '<a href="javascript:showEditModal(' + item.rno + ')" replyer-idx="${reply.replyer.idx}" class="badge bg-warning text-decoration-none">수정</a> ' +
+                        '<a href="javascript:deleteReply(' + item.rno + ')" replyer-idx="${reply.replyer.idx}" class="badge bg-danger text-decoration-none">삭제</a> ' +
                         '</td></tr>'
 
                     $('#replyList').append(html)
@@ -51,7 +51,7 @@
                     contentType: 'application/json',
                     data: JSON.stringify(payload),
                     success: function (data) {
-                        let html = '<tr><td class="col-2">' + data.replyer + '</td>'
+                        let html = '<tr><td class="col-2">' + data.replyer.username + '</td>'
                         html += '<td class="col">' + data.reply + '</td>'
                         html += '<td class="col-2">' + data.replydate + '</td>'
                         html += '<td class="col-2"> ' +
@@ -62,8 +62,10 @@
                         $('#replyList').append(html)
                         $('#replyList tr:last').addClass('fs-6 text-center').attr('tr-index', data.rno)
 
+                        $('#replyList tr:last a').attr('replyer-idx', data.replyer.idx)
+
                         $('#reply').val('')
-                        $('#replyer').val('')
+                        // $('#replyer').val('')
                     }
                 })
             })
@@ -118,8 +120,10 @@
         </table>
 
         <div class="text-end">
+            <th:block th:if="${#authentication.principal.member.idx} == ${boardView.writer.idx}">
             <a class="btn btn-warning" th:href="@{/board/edit(bno=${boardView.bno}, p=${currentPageNum})}">수정</a>
             <a class="btn btn-danger" th:onclick="'deleteBoard('+${boardView.bno}+')'">삭제</a>
+            </th:block>
             <a class="btn btn-primary" th:href="@{/board/list(p=${currentPageNum})}">리스트</a>
         </div>
 
@@ -138,7 +142,8 @@
                     <h5 class="title my-2">댓글 작성</h5>
                     <div class="mb-3">
                         <label class="form-label">작성자</label>
-                        <input type="text" class="form-control" id="replyer">
+                        <input type="text" class="form-control"th:value="${#authentication.principal.member.username}" readonly>
+                        <input type="hidden" class="form-control" id="replyer" th:value="${#authentication.principal.member.idx}">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">내용</label>
@@ -178,7 +183,8 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <label class="form-label">작성자</label>
-                    <input type="text" class="form-control" id="ereplyer" readonly>
+                    <input type="text" class="form-control" readonly>
+                    <input type="hidden" class="form-control" id="ereplyer">
                     <input type="hidden" id="erno">
                     <input type="hidden" id="ereplydate">
                 </div>
@@ -217,8 +223,14 @@
 <script>
 
     var bno = [[${boardView.bno}]]
+    var midx = [[${midx}]]
 
     function deleteReply(rno) {
+
+        if(midx != $(this).attr('replyer-idx')){
+            alert('작성자만 수정 또는 삭제가 가능합니다.')
+            return false;
+        }
 
         if (!confirm('삭제하시겠습니까?')) {
             return;
@@ -234,6 +246,11 @@
     }
 
     function showEditModal(rno) {
+
+        if(midx != $(this).attr('replyer-idx')){
+            alert('작성자만 수정 또는 삭제가 가능합니다.')
+            return false;
+        }
 
         editModal.show()
 
