@@ -14,12 +14,25 @@ import MailBox from './components/MailBox';
 import UserStatus from './components/UserStatus';
 import WarningBanner from './components/WarningBanner';
 import Mainpage from './components/Mainpage';
+import NumberList from './components/NumberList';
+import TeamPlayers from './components/TeamPlayers';
+import NameForm from './components/NameForm';
+import RequestForm from './components/RequestForm';
+import FruitSelect from './components/FruitSelect';
+import Reservation from './components/Reservation';
+import WelcomeMessage from './components/WelcomeMessage';
+import WelcomeDialog from './components/WelcomeDialog';
+import SingUpDialog from './components/SignUpDialog';
+import Card from './components/Card';
+import ProfileCard from './components/ProfileCard';
+import MainContent from './components/MainContent';
+import DarkOrWhite from './components/DarkOrWhite';
+import Container from './components/Container';
 
-let list = [{}, {}, {}, {}, {}, {}, {}]
 
 function App() {
   return (
-    <Mainpage />
+    <Container />
   );
 }
 
