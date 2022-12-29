@@ -19,7 +19,7 @@ const nav = {
 const article1 = {
     title: 'article1Title',
     date: '2022-11-01',
-    imgUrl: 'Img/html5.png',
+    imgUrl: 'https://poiemaweb.com/img/html5.png',
     description: '(서울=연합뉴스) 김주환 기자 = 게임물관리위원회가 최근 확산한 불공정\n' +
         '            심의 논란, 전산망 구축 비리 의혹 등과 관련해 게임 이용자들과 소통을\n' +
         '            강화하기 위한 각종 조치를 내놓기로 했다. 게임위는 오는 10일 오전\n' +
@@ -32,7 +32,7 @@ const article1 = {
 const article2 = {
     title: 'article2Title',
     date: '2022-11-01',
-    imgUrl: 'Img/html5.png',
+    imgUrl: 'https://poiemaweb.com/img/html5.png',
     description: '(서울=연합뉴스) 김주환 기자 = 게임물관리위원회가 최근 확산한 불공정\n' +
         '            심의 논란, 전산망 구축 비리 의혹 등과 관련해 게임 이용자들과 소통을\n' +
         '            강화하기 위한 각종 조치를 내놓기로 했다. 게임위는 오는 10일 오전\n' +
@@ -49,9 +49,8 @@ const aside = {
     ],
 
     latest: [
-        'latest1Test', 'latest2Test', 'latest3Test', 'latest4Test',
+        'latest1Test', 'latest2Test', 'latest3Test', 'latest4Test'
     ]
-
 }
 
 const footer = {

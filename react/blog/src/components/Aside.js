@@ -8,6 +8,12 @@ function Aside({aside}) {
         )
     })
 
+    const latestList = aside.latest.map((latest, index) => {
+        return (
+            <li key={index}>{latest}</li>
+        )
+    })
+
     return (
         <aside>
             <h4>카테고리</h4>
@@ -16,10 +22,7 @@ function Aside({aside}) {
             </ul>
             <h4>최근 글</h4>
             <ul>
-                <li>{aside.latest1}</li>
-                <li>{aside.latest2}</li>
-                <li>{aside.latest3}</li>
-                <li>{aside.latest4}</li>
+                {latestList}
             </ul>
         </aside>
     );
