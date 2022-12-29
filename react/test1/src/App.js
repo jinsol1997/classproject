@@ -27,12 +27,13 @@ import Card from './components/Card';
 import ProfileCard from './components/ProfileCard';
 import MainContent from './components/MainContent';
 import DarkOrWhite from './components/DarkOrWhite';
-import Container from './components/Container';
+import Container from './components/ex1/Container';
+import WordContainer from './components/ex2/WordContainer';
 
 
 function App() {
   return (
-    <Container />
+    <WordContainer />
   );
 }
 
