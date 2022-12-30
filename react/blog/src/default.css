@@ -43,13 +43,13 @@ nav > ul > li {
   float: left;
   width: 120px;
   text-align: center;
-  padding: 8px 0;
+  line-height: 40px;
 }
 nav > div {
   float: right;
   width: 330px;
   text-align: right;
-  line-height: 40px;
+  padding: 8px 0;
 }
 nav > div > input[type="text"] {
   height: 20px;
@@ -65,7 +65,6 @@ nav > div > input[type="button"] {
   height: 22px;
   width: 50px;
   border-radius: 0 10px 10px 0;
-  margin-left: -2px;
   outline: 0;
   border: 1px solid #aaa;
   vertical-align: middle;
