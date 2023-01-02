@@ -85,20 +85,20 @@ export default function PageLayout(props) {
             <CssBaseline />
             <AppBar position="fixed" open={open}>
                 <CustomToolbar title={props.title} handleDrawerOpen={handleDrawerOpen}/>
-                {/*<Toolbar>*/}
-                {/*    <IconButton*/}
-                {/*        color="inherit"*/}
-                {/*        aria-label="open drawer"*/}
-                {/*        onClick={handleDrawerOpen}*/}
-                {/*        edge="start"*/}
-                {/*        sx={{ mr: 2, ...(open && { display: 'none' }) }}*/}
-                {/*    >*/}
-                {/*        <MenuIcon />*/}
-                {/*    </IconButton>*/}
-                {/*    <Typography variant="h6" noWrap component="div">*/}
-                {/*        {props.title}*/}
-                {/*    </Typography>*/}
-                {/*</Toolbar>*/}
+                {/*<Toolbar>
+                    <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        onClick={handleDrawerOpen}
+                        edge="start"
+                        sx={{ mr: 2, ...(open && { display: 'none' }) }}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography variant="h6" noWrap component="div">
+                        {props.title}
+                    </Typography>
+                </Toolbar>*/}
             </AppBar>
             <Drawer
                 sx={{
@@ -120,12 +120,15 @@ export default function PageLayout(props) {
                 </DrawerHeader>
                 <Divider />
 
-                <MenuComponent/>
+                <MenuComponent></MenuComponent>
+
+
             </Drawer>
             <Main open={open}>
                 <DrawerHeader />
 
                 {props.children}
+
 
             </Main>
         </Box>

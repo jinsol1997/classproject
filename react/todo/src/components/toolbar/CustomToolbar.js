@@ -1,10 +1,10 @@
 import React from 'react';
-import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Typography from "@mui/material/Typography";
+import Toolbar from "@mui/material/Toolbar";
 
-function CustomToolbar({title, handleDrawerOpen}, open) {
+function CustomToolbar({title, handleDrawerOpen}) {
     return (
         <Toolbar>
             <IconButton
@@ -13,7 +13,7 @@ function CustomToolbar({title, handleDrawerOpen}, open) {
                 aria-label="menu"
                 onClick={handleDrawerOpen}
                 edge="start"
-                sx={{ mr: 2, ...(open && { display: 'none' }) }}
+                sx={{ mr: 2 }}
             >
                 <MenuIcon />
             </IconButton>
